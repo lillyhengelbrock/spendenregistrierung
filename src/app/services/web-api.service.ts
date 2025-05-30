@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, delay, of } from 'rxjs';
 
 export interface SubmissionData {
   abholung: boolean;
@@ -16,11 +15,10 @@ export interface SubmissionData {
   providedIn: 'root'
 })
 export class WebApiService {
-  private apiUrl = '/api/submissions';
 
-  constructor (private http: HttpClient){}
+  constructor (){}
 
   submitForm(data: SubmissionData): Observable<any> {
-    return this.http.post(this.apiUrl, data)
+    return of({ success: true, message: 'Data received!'}).pipe(delay(500))
   }
 }

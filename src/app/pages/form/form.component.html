@@ -1,1 +1,31 @@
-<p>form works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="art">Art der Kleidung</label>
+        <select id="art" formControlName="art" class="form-control">
+            <option value="">Bitte wählen</option>
+            <option value="damen">Damen</option>
+            <option value="herren">Herren</option>
+            <option value="kinder">Kinder</option>
+            <option value="sonstige">Sonstige Textilien</option>
+        </select>
+        <div class="error" *ngIf="form.get('art')?.touched && form.get('art')?.invalid">
+            Bitte wählen Sie eine Option aus.
+        </div>
+    </div>
+    <label>Ihr Name: <input formControlName="name" /></label>
+    <label>
+        <input type="checkbox" formControlName="abholung"/>
+        Abholung bei Ihnen zu Hause
+    </label>
+    <div *ngIf="form.get('abholung')?.value">
+        <label>Straße: <input formControlName="strasse" /></label>
+        <label>Hausnummer: <input formControlName="hausnummer" /></label>
+        <label>PLZ: <input formControlName="plz" /></label>
+        <div *ngIf="form.get('plz')?.touched && form.get('plz')?.invalid">
+            <span *ngIf="form.get('plz')?.errors?.['required']">PLZ ist ein Pflichtfeld.</span>
+            <span *ngIf="form.get('plz')?.errors?.['pattern']">PLZ muss wegen des Einzugsgebiets mit 34 beginnen.</span>
+        </div>
+        <label>Ort: <input formControlName="ort" /></label>
+    </div>
+    <button type="submit">Absenden</button>
+</form>
