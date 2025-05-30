@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+.container {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+    }
+    form {
+        width: 100%;
+    }
+    label, input, select, button {
+        width: 100%;
+        display: block;
+        margin-bottom: 1rem;
+    }
+}
