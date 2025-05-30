@@ -12,20 +12,34 @@
             Bitte wählen Sie eine Option aus.
         </div>
     </div>
-    <label>Ihr Name: <input formControlName="name" /></label>
-    <label>
-        <input type="checkbox" formControlName="abholung"/>
-        Abholung bei Ihnen zu Hause
-    </label>
+    <div class="form-group">
+        <label>Ihr Name: <input formControlName="name" /></label>
+    </div>
+    <div class="form-group">
+        <label>
+            <input type="checkbox" formControlName="abholung"/>
+            Abholung bei Ihnen zu Hause
+        </label>
+    </div>
     <div *ngIf="form.get('abholung')?.value">
-        <label>Straße: <input formControlName="strasse" /></label>
-        <label>Hausnummer: <input formControlName="hausnummer" /></label>
-        <label>PLZ: <input formControlName="plz" /></label>
+        <div class="form-group">
+            <label>Straße: <input formControlName="strasse" /></label>
+        </div>
+        <div class="form-group">
+            <label>Hausnummer: <input formControlName="hausnummer" /></label>
+        </div>
+        <div class="form-group">
+            <label>PLZ: <input formControlName="plz" /></label>
         <div *ngIf="form.get('plz')?.touched && form.get('plz')?.invalid">
             <span *ngIf="form.get('plz')?.errors?.['required']">PLZ ist ein Pflichtfeld.</span>
             <span *ngIf="form.get('plz')?.errors?.['pattern']">PLZ muss wegen des Einzugsgebiets mit 34 beginnen.</span>
         </div>
-        <label>Ort: <input formControlName="ort" /></label>
+        </div>
+        <div class="form-group">
+            <label>Ort: <input formControlName="ort" /></label>
+        </div>    
     </div>
-    <button type="submit">Absenden</button>
+    <div class="form-group">
+        <button type="submit">Absenden</button>
+    </div>
 </form>

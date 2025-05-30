@@ -1,2 +1,13 @@
-<h2>Zusammenfassung</h2>
-<pre>{{ data | json }}</pre>
+<div class="summary-container" *ngIf="data">
+    <h2>Zusammenfassung</h2>
+    <p><strong>Art der Kleidung:</strong> {{ data.art}}</p>
+    <p><strong>Ihr Name:</strong> {{ data.name}}</p>
+    <div *ngIf="data.abholung">
+        <p><strong>Abholadresse</strong></p>
+        <p><strong>Straße:</strong> {{ data.strasse}}</p>
+        <p><strong>Hausnummer:</strong> {{ data.hausnummer}}</p>
+        <p><strong>Postleitzahl:</strong> {{ data.plz}}</p>
+        <p><strong>Ort:</strong> {{ data.ort}}</p>
+    </div>
+</div>
+<button (click)="goBack()">Zurück zum Formular</button>
